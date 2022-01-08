@@ -1,0 +1,24 @@
+name: ''
+description: 'run release script on PR'
+author: '@wildlifela'
+inputs:
+  dry_run:
+    description: "Do not actually tag next version if it's true"
+    required: false
+  github_token:
+    description: 'GITHUB_TOKEN to list pull requests'
+    default: '${{ github.token }}'
+    required: true
+outputs:
+  current_version:
+    description: "current version"
+  next_version:
+    description: "next version"
+  skip:
+    description: "True if release is skipped. e.g. No labels attached to PR."
+  message:
+    description: "Tag message"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
